@@ -127,7 +127,7 @@
 }
 .icon:hover {
     background-color: orange;
-    border-radius: 30%;
+    border-radius: 20%;
     filter: invert(100%);
     transition: 0.5s;
 }
