@@ -39,6 +39,14 @@
     font-weight: 700;
     font-family: "Lato", sans-serif;
 }
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 30%;
+    width: 400px;
+    margin-right: 40px;
+}
 /*
 ################
                HEADER
@@ -126,9 +134,8 @@
     height: 16px;
 }
 .icon:hover {
-    background-color: orange;
+    background-color: rgb(89, 140, 250);
     border-radius: 20%;
-    filter: invert(100%);
     transition: 0.5s;
 }
 .icon-Facebook {
@@ -168,12 +175,6 @@
                SKILLS
 ################
 */
-.skills_column {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    max-width: 30%;
-}
 .skills {
     flex-direction: row;
     justify-content: space-between;
@@ -181,3 +182,30 @@
 .skills__img {
     margin: 32px 0;
 }
+/*
+################
+               Experience
+################
+*/
+.experience {
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.experience__info {
+    max-width: 70%;
+    width: 800px;
+}
+/*
+################
+               Education
+################
+*/
+.education {
+    flex-direction: row;
+    justify-content: flex-start;
+}
+/*
+################
+               Portfolio
+################
+*/
