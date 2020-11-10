@@ -28,7 +28,26 @@
     <script src="https://kit.fontawesome.com/1a6029b417.js">
     </script>
     <link href="styles/font-awesome.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+    <!-- Прогрев домена статики -->
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin />
+
+    <!-- Асинхронная предзагрузка CSS файла с высоким приоритетом -->
+    <link rel="preload"
+          as="style"
+          href="css?family=Quicksand&display=swap" />
+
+    <!-- Неблокирующая загрузка CSS-файла с низким приоритетом -->
+    <link rel="stylesheet"
+          href="css?family=Quicksand&display=swap"
+          media="print" onload="this.media='all'" />
+
+    <!-- Фоллбэк при отключенном JavaScript -->
+    <noscript>
+      <link rel="stylesheet"
+            href="css?family=Quicksand&display=swap" />
+    </noscript>
 </head>
 
 <body>
@@ -90,7 +109,7 @@
                                 href="404.html">See features</a>
                         </div>
                     </div>
-                    <div class="media col-md-6 col-sm-12"><img alt="" src="img/plan-and-manage-bg.png"></div>
+                    <div class="media col-md-6 col-sm-12"><img loading="lazy" alt="" src="img/plan-and-manage-bg.png"></div>
                 </div>
                 <div class="features justify-content-center" id="features">
                     <div class="features__inner">
@@ -664,6 +683,7 @@
     </script>
     <link href="styles/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.min.css" media="print" onload="this.media='all'; this.onload=null;">
+    <noscript><link rel="stylesheet" href="styles/main.min.css"></noscript>
     <script src="js/main.js">
     </script>
 </body>
