@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<urlset xmlns="http://www.google.com/schemas/sitemap/0.84" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+		<url>
+			<loc>http://for-site.zzz.com.ua/</loc>
+			<changefreq>yearly</changefreq>
+		</url>
+
+		<url>
+			<loc>http://for-site.zzz.com.ua/404.html</loc>
+			<changefreq>yearly</changefreq>
+		</url>
+
+		<url>
+			<loc>http://for-site.zzz.com.ua/#</loc>
+			<changefreq>yearly</changefreq>
+		</url>
+
+		<url>
+			<loc>http://for-site.zzz.com.ua/#about-us</loc>
+			<changefreq>yearly</changefreq>
+		</url>
+
+		<url>
+			<loc>http://for-site.zzz.com.ua/#portfolio</loc>
+			<changefreq>yearly</changefreq>
+		</url>
+
+		<url>
+			<loc>http://for-site.zzz.com.ua/#blog</loc>
+			<changefreq>yearly</changefreq>
+		</url>
+
+		<url>
+			<loc>http://for-site.zzz.com.ua/#contact</loc>
+			<changefreq>yearly</changefreq>
+		</url>
+
+		<url>
+			<loc>http://for-site.zzz.com.ua/tel:+91123456789</loc>
+			<changefreq>yearly</changefreq>
+		</url>
+
+		<url>
+			<loc>http://for-site.zzz.com.ua/mailto:mail@mail.ua</loc>
+			<changefreq>yearly</changefreq>
+		</url>
+
+		<url>
+			<loc>http://for-site.zzz.com.ua/tel:+12345678</loc>
+			<changefreq>yearly</changefreq>
+		</url>
+
+		<url>
+			<loc>http://for-site.zzz.com.ua/mailto:info@cube.com</loc>
+			<changefreq>yearly</changefreq>
+		</url>
+
+		<url>
+			<loc>http://for-site.zzz.com.ua/mailto:cube@gmail.com</loc>
+			<changefreq>yearly</changefreq>
+		</url>
+
+	</urlset>
+
