@@ -1290,7 +1290,7 @@ footer {
   -ms-flex-pack: center;
   justify-content: center;
 }
-.clients .swiper-pagination {
+.clients .swiper-pagination__wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1301,7 +1301,7 @@ footer {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  width: 98%;
+  width: 100%;
 }
 .clients .swiper-pagination .swiper-pagination-bullet {
   width: 14px;
