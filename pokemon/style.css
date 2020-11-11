@@ -1,0 +1,290 @@
+/* Указываем box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Убираем внутренние отступы */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Убираем внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Выставляем основные настройки по-умолчанию для body */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Упрощаем работу с изображениями */
+img {
+  max-width: 100%;
+}
+
+/* Наследуем шрифты для инпутов и кнопок */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+html {
+  font-size: 10px;
+  font-family: Roboto, sans-cerif;
+}
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.text {
+  font-size: 1.6rem;
+  color: #000;
+}
+.title {
+  font-size: 2.4rem;
+}
+/* HEADER */
+.header {
+  background-color: #FF0000;
+  padding: 1.5rem 0;
+}
+.filter {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 1rem;
+  background-color: #000;
+}
+.search__wrapper, .tags__wrapper, .selector__wrapper, .header .tags__list {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+.search__wrapper {
+  flex-basis: 100%;
+  width: 100%;
+  position: relative;
+}
+.search__wrapper .search, .selector__wrapper .selector, .header  .tags__wrapper .btn {
+  width: 100%;
+  padding: 0.5rem 1rem;
+}
+.search__wrapper .btn {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 7px;
+  right: 10px;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+}
+.selector__wrapper {
+  flex-basis: 8%;
+  width: 8%;
+} 
+.tags__wrapper {
+  justify-content: center;
+  flex-basis: 12%;
+  width: 12%;
+}
+.header .tags__list {
+  flex-basis: 80%;
+  width: 80%;
+  display: flex;
+  flex-flow: row wrap;
+}
+.header .js-tagList {
+  display: none;
+}
+.header .js-tagList--open {
+  display: flex;
+}
+.header .tags__item {
+  margin: 0.5rem;
+  cursor: pointer;
+}
+.header .tags__item, .card .tag__item {
+  position: relative;
+  padding: 0.5rem;
+  padding-left: 2.2rem;
+  background-color: #fff;
+  border-radius: 5px;
+}
+.header .tags__item--red {
+  background-color: red;
+}
+.header .tags__item::before, .card .tag__item::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  width: 15px;
+  height: 15px;
+  background-image: url(https://img.icons8.com/ios/50/000000/tag-window.png);
+  background-size: cover;
+  transform: translateY(-50%);
+}
+.header .tags__item input[type=checkbox] {
+  display: none;
+}
+/* MAIN */
+.main {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 1.5rem 1rem; 
+}
+.card {
+  display: block;
+  padding: 0.5rem 1rem;
+  flex-basis: 25%;
+  width: 25%;
+}
+.card__inner {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 1rem;
+  background-color: gray;
+  text-align: center;
+}
+.card .title {
+  text-transform: capitalize;
+}
+.card .img__wrapper {
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+}
+.card .img__wrapper .img {
+  width: 100%;
+  height: 100%;
+}
+.card .tag__list {
+  padding: 0.5rem;
+  border: 1px solid #000;
+}
+.card .tag__wrapper {
+  display: inline-block;
+  padding: 0.5rem 0.5rem;
+} 
+.stats {
+  display: flex;
+}
+.stats__inner {
+  display: flex;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+}
+.stats__count, .stats__title {
+  border: 1px solid #000;
+  border-top: none;
+}
+.stats__title {
+  flex-basis: 35%;
+  width: 35%;
+}
+.stats__count {
+  flex-basis: 65%;
+  width: 65%;
+  border-left: none;
+}
+.pagination {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 0.5rem;
+  flex-basis: 100%;
+  width: 100%;
+  justify-content: center;
+  background-color: #000;
+}
+.pagination__item {
+  color: #fff;
+  margin: 0 0.5rem;
+  cursor: pointer;
+}
+.js-active {
+  color: red;
+}
+/* MOBILE STYLING */
+@media screen and (max-width: 1200px) {
+  .selector__wrapper {
+    flex-basis: 10%;
+    width: 10%;
+  }
+  .tags__wrapper {
+    flex-basis: 15%;
+    width: 15%;
+  }
+  .header .tags__list {
+    flex-basis: 75%;
+    width: 75%;
+  }
+  .card {
+    flex-basis: 33.333%;
+    width: 33.333%;
+  } 
+}
+@media screen and (max-width: 960px) {
+  .selector__wrapper {
+    flex-basis: 20%;
+    width: 20%;
+  }
+  .tags__wrapper {
+    flex-basis: 80%;
+    width: 80%;
+  }
+  .header .tags__list {
+    flex-basis: 100%;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 720px) {
+  .card {
+    flex-basis: 50%;
+    width: 50%;
+  } 
+}
+@media screen and (max-width: 576px) {
+  .selector__wrapper, 
+  .tags__wrapper, 
+  .header .tags__list, 
+  .header .tags__list,
+  .card {
+    flex-basis: 100%;
+    width: 100%;
+  }
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Test</title>
+	<link rel="stylesheet" href="style.css">
+	<!-- Прогрев домена статики -->
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+	<!-- Асинхронная предзагрузка CSS файла с высоким приоритетом -->
+	<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" />
+
+	<!-- Неблокирующая загрузка CSS-файла с низким приоритетом -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" media="print"
+		onload="this.media='all'" />
+
+	<!-- Фоллбэк при отключенном JavaScript -->
+	<noscript>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+	</noscript>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<form action="#" class="filter" name="headerForm">
+				<div class="search__wrapper">
+					<input type="search" name="search" class="search text" placeholder="Type name of pokemon here">
+					<button class="btn js-searchBtn">
+						<img src="img/icon-search.svg" alt="Search">
+					</button>
+				</div>
+				<div class="selector__wrapper">
+					<select name="selector" id="" class="selector text js-selector">
+						<option value="10" selected="selected">10</option>
+						<option value="20">20</option>
+						<option value="50">50</option>
+					</select>
+				</div>
+				<div class="tags__wrapper">
+					<button class="btn text js-tagBtn">Choose tags</button>
+				</div>
+				<div class="tags__list js-tagList">
+				</div>
+			</form>
+		</header>
+		<main class="main js-main">
+		</main>
+		<footer class="pagination js-pagination">
+		</footer>
+	</div>
+	<script src="main.js" async></script>
+</body>
+
+</html>
