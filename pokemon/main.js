@@ -147,10 +147,10 @@ function loadBySelect() {
 	});
 
 	clearPage();
+	// PAGINATION
+	loadPaginations(listOfAllPokemos);
 	// CREATING PAGINATION
 	function loadPaginations(allPokemonsArr) {
-		let selector = headerForm.selector;
-		let selectOptions = selector.options;
 		let numPagination;
 		for (let i = 0; i < selectOptions.length; i++) {
 			if (selectOptions[i].selected) {
@@ -173,7 +173,26 @@ function loadBySelect() {
 		}
 		createPagination(numPagination);
 	}
-	loadPaginations(listOfAllPokemos);
+	function actionPagination() {
+		let paginationList = document.querySelectorAll('.pagination__item');
+		let numOfNotesOnPage;
+		paginationList.forEach(item => item.addEventListener('click', function() {	
+			for (let i = 0; i < paginationList.length; i++) {
+				paginationList[i].classList.remove('js-active');
+			}
+			this.classList.add('js-active');
+			for (let i = 0; i < selectOptions.length; i++) {
+				if (selectOptions[i].selected) {
+					numOfNotesOnPage = selectOptions[i].value;
+				}
+			}
+			let pagNum = this.innerText;
+			let start = numOfNotesOnPage * (pagNum - 1);
+			let end = (numOfNotesOnPage * pagNum) - 1;
+			console.log(pagNum);
+		}))
+	}
+	actionPagination();
 	// TAGS
 	let allPokemonTags = [];
 	// CHOSOSE TAG ITEM STYLING
@@ -250,6 +269,7 @@ function loadBySelect() {
 	// Вешаем событие на элемент селектора
 	selector.addEventListener('change', function () {
 		checkSelectValue(value);
+		loadPaginations(listOfAllPokemos);
 	})
 	// Проверяем значение элемента селект и вызываем функцию для загрузки массива отображаемых покемонов
 	function checkSelectValue() {
