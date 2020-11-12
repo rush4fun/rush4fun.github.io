@@ -166,6 +166,7 @@ html {
 .main {
   display: flex;
   flex-flow: row wrap;
+  align-items: center;
   padding: 1.5rem 1rem; 
 }
 .card {
@@ -239,6 +240,10 @@ html {
 .js-active {
   color: red;
 }
+.preloader {
+  font-size: 3rem;
+  margin-right: 1rem;
+}
 /* MOBILE STYLING */
 @media screen and (max-width: 1200px) {
   .selector__wrapper {
@@ -286,5 +291,14 @@ html {
   .card {
     flex-basis: 100%;
     width: 100%;
+  }
+}
+/* ANIMATION */
+@keyframes rotatingPokeball {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

@@ -1,16 +1,16 @@
-function loading() {
-	let main = document.querySelector('.js-main');
-	if (main.innerHTML == '') {
-		main.innerHTML = "<p style='font-size: 3rem'>Please wait a minute, we are catching all pokemons</p>";
+function preloader() {
+	const MAIN = document.querySelector('.js-main');
+	if (MAIN.innerHTML == '') {
+		MAIN.innerHTML = "<p class='preloader'>Please wait a minute, we are catching all pokemons</p><img src='img/pokeball.svg' class='preloader__img'>";
 	}
 }
 // OPEN TAGS LIST
 function openTagsList() {
-	let btnTagOpen = document.querySelector('.js-tagBtn');
-	btnTagOpen.addEventListener('click', function () {
+	const BTN_TAG_OPEN = document.querySelector('.js-tagBtn');
+	BTN_TAG_OPEN.addEventListener('click', function () {
 		event.preventDefault();
-		let tagList = document.querySelector('.js-tagList');
-		tagList.classList.toggle('js-tagList--open');
+		const TAG_LIST = document.querySelector('.js-tagList');
+		TAG_LIST.classList.toggle('js-tagList--open');
 	})
 }
 // CLASS TO CREATE POKEMON
@@ -144,6 +144,7 @@ function loadBySelect() {
 	let inputSearch = headerForm.search;
 	let searchbtn = document.querySelector('.js-searchBtn').addEventListener('click', function() {
 		event.preventDefault();
+		searchingPokemons();
 	});
 
 	clearPage();
@@ -177,6 +178,7 @@ function loadBySelect() {
 		let paginationList = document.querySelectorAll('.pagination__item');
 		let numOfNotesOnPage;
 		paginationList.forEach(item => item.addEventListener('click', function() {	
+			clearPage();
 			for (let i = 0; i < paginationList.length; i++) {
 				paginationList[i].classList.remove('js-active');
 			}
@@ -188,11 +190,13 @@ function loadBySelect() {
 			}
 			let pagNum = this.innerText;
 			let start = numOfNotesOnPage * (pagNum - 1);
-			let end = (numOfNotesOnPage * pagNum) - 1;
+			let end = numOfNotesOnPage * pagNum;
+			for (let i = start; i < end; i++) {
+				listOfAllPokemos[i].createPokemonBlock();
+			}
 			console.log(pagNum);
 		}))
 	}
-	actionPagination();
 	// TAGS
 	let allPokemonTags = [];
 	// CHOSOSE TAG ITEM STYLING
@@ -206,7 +210,6 @@ function loadBySelect() {
 			})
 		}
 	}
-	stylingChosenTagItem();
 	function tagAction() {
 		clearPage();
 		let tagList = document.querySelectorAll('.tags__item--red');
@@ -241,7 +244,8 @@ function loadBySelect() {
 		}
 	}
 	// SEARCH
-	inputSearch.addEventListener('keyup', function () {
+	inputSearch.addEventListener('keyup', searchingPokemons);
+	function searchingPokemons() {
 		let inputSearchValue = inputSearch.value;
 		let chosenPokemos = [];
 		if (inputSearchValue != 0) {
@@ -262,14 +266,13 @@ function loadBySelect() {
 		for(let j = 0; j < chosenPokemos.length; j++) {
 			chosenPokemos[j].createPokemonBlock();
 		}
-	})
-
-	createNewPokemonsArr(value);
+	}
 	
 	// Вешаем событие на элемент селектора
 	selector.addEventListener('change', function () {
 		checkSelectValue(value);
 		loadPaginations(listOfAllPokemos);
+		actionPagination();
 	})
 	// Проверяем значение элемента селект и вызываем функцию для загрузки массива отображаемых покемонов
 	function checkSelectValue() {
@@ -287,7 +290,12 @@ function loadBySelect() {
 			listOfAllPokemos[i].createPokemonBlock();
 		}
 	}
-
+	let init = function() {
+		createNewPokemonsArr(value);
+		stylingChosenTagItem();
+		actionPagination();
+	}
+	init();
 }
 function clearPage() {
 	let main = document.querySelector('.js-main');
@@ -319,8 +327,8 @@ function loadPokemons(newPokemonsArr) {
 			})
 	}
 }
-function init() {
-	loading();
+let init = function() {
+	preloader();
 	openTagsList();
 	loadingTags();
 	fetchingAllPokeapi();
