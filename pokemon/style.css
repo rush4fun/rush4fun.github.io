@@ -103,14 +103,18 @@ html {
   padding: 0.5rem 1rem;
 }
 .search__wrapper .btn {
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   position: absolute;
   top: 7px;
   right: 10px;
   border: none;
   background-color: #fff;
   cursor: pointer;
+}
+.btn {
+  border: none;
+  border-radius: 3px;
 }
 .selector__wrapper {
   flex-basis: 8%;
@@ -181,6 +185,7 @@ html {
   padding: 1rem;
   background-color: gray;
   text-align: center;
+  border-radius: 5px;
 }
 .card .title {
   text-transform: capitalize;
@@ -242,7 +247,10 @@ html {
 }
 .preloader {
   font-size: 3rem;
-  margin-right: 1rem;
+  margin-right: 2rem;
+}
+.preloader__img {
+  animation: rotatingPokeball 1.5s infinite ease-in-out;
 }
 /* MOBILE STYLING */
 @media screen and (max-width: 1200px) {

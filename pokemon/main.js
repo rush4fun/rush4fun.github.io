@@ -1,3 +1,4 @@
+// PRELOADER
 function preloader() {
 	const MAIN = document.querySelector('.js-main');
 	if (MAIN.innerHTML == '') {
@@ -22,11 +23,11 @@ class pokemonCreate {
 		this.stats = stats;
 	}
 	createPokemonBlock() {
-		let main = document.querySelector('.js-main');
+		const MAIN = document.querySelector('.js-main');
 
 		let card = document.createElement('div');
 		card.classList.add('card');
-		main.appendChild(card);
+		MAIN.appendChild(card);
 
 		let cardInner = document.createElement('div');
 		cardInner.classList.add('card__inner');
@@ -89,7 +90,7 @@ class pokemonCreate {
 
 	}
 }
-// LOADING TAGS
+// LOADING TAGS FROM URL
 function loadingTags() {
 	let allPoekmonTagsUrl = 'https://pokeapi.co/api/v2/type';
 
@@ -97,12 +98,12 @@ function loadingTags() {
 		.then(function (response) {
 			response.json()
 				.then(function (pokemonTags) {
-					renderTagHtml(pokemonTags);
+					renderTagInHtml(pokemonTags);
 				})
 		})
 
-	function renderTagHtml(pokemonTags) {
-		let tagList = document.querySelector('.js-tagList');
+	function renderTagInHtml(pokemonTags) {
+		const TAG_LIST = document.querySelector('.js-tagList');
 
 		let allPokemonTags = pokemonTags.results;
 
@@ -118,16 +119,16 @@ function loadingTags() {
 			tag.id = item.name;
 			tagItem.appendChild(tag);
 
-			tagList.appendChild(tagItem);
+			TAG_LIST.appendChild(tagItem);
 		})())
 
 	}
 }
 
-// LOADING POKEMON
+// LOADING POKEMON FROM URL
 let listOfAllPokemos = []; 
 let value = 10;
-function fetchingAllPokeapi() {
+function loadingAllPokemons() {
 	let allPokemonUrl = 'https://pokeapi.co/api/v2/pokemon?limit=893';
 
 	fetch(allPokemonUrl)
@@ -138,7 +139,7 @@ function fetchingAllPokeapi() {
 				})
 		})
 }
-function loadBySelect() {
+function loadMainPage() {
 	let selector = headerForm.selector;
 	let selectOptions = selector.options;
 	let inputSearch = headerForm.search;
@@ -298,8 +299,8 @@ function loadBySelect() {
 	init();
 }
 function clearPage() {
-	let main = document.querySelector('.js-main');
-	main.innerHTML = '';
+	const MAIN = document.querySelector('.js-main');
+	MAIN.innerHTML = '';
 }
 clearPage();
 function loadPokemons(newPokemonsArr) {
@@ -331,6 +332,6 @@ let init = function() {
 	preloader();
 	openTagsList();
 	loadingTags();
-	fetchingAllPokeapi();
+	loadingAllPokemons();
 }
 document.addEventListener('DOMContentLoaded', init())
