@@ -322,7 +322,7 @@ function loadPokemons(newPokemonsArr) {
 						let newPokemon = new pokemonCreate(pokemon.name, pokemon.sprites.front_default, pokemon.types, pokemon.stats);
 						listOfAllPokemos.push(newPokemon);
 							if (listOfAllPokemos.length == newPokemonsArr.length) {
-							loadBySelect();
+							loadMainPage();
 						}
 					})
 			})
