@@ -52,7 +52,8 @@
     <link href="img/favicons/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180">
     <link href="img/favicons/apple-touch-icon-1024x1024.png" rel="apple-touch-icon" sizes="1024x1024">
     <noscript>
-    <link rel="stylesheet" href="styles/main.min.css"></noscript>
+        <link rel="stylesheet" href="styles/main.min.css">
+    </noscript>
     <link href="styles/swiper.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/1a6029b417.js"></script>
 </head>
@@ -70,7 +71,7 @@
                         quis lacus ut justo varius auctor non a nulla.</p>
                 </div>
                 <div class="content">
-                    <article class="article wow animate__bounceInUp" data-wow-duration="2s">
+                    <article class="article wow animate__bounceInUp" data-wow-duration="2s" >
                         <h3 class="nav-text subtitle">website design & development</h3>
                         <p class="nav-text">Lorem ipsum dolor sit amet, con ectetur adipiscing elit. Sed varius, velit
                             in aliquam interdum, lorem tortor feugiat elit, vel porttitor ipsum urna ut neque.</p>
@@ -797,12 +798,12 @@
         if (ourBrowser.includes(mozilla)) {
             let link = document.createElement('link');
             link.rel = 'stylesheet';
-            link.href = 'styles/main.css';
+            link.href = 'styles/main.min.css';
             document.head.appendChild(link);
         } else {
             let link = document.createElement('link');
             link.rel = 'stylesheet';
-            link.href = 'styles/main.css';
+            link.href = 'styles/main.min.css';
             link.media = 'print';
             link.onload = "this.media='all'";
             document.head.appendChild(link);
