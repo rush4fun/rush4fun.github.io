@@ -98,31 +98,26 @@ function loadingTags() {
 		.then(function (response) {
 			response.json()
 				.then(function (pokemonTags) {
-					renderTagInHtml(pokemonTags);
+					const TAG_LIST = document.querySelector('.js-tagList');
+
+					let allPokemonTags = pokemonTags.results;
+
+					allPokemonTags.forEach(item => (function () {
+						let tagItem = document.createElement('label');
+						tagItem.classList.add('tags__item', 'text');
+						tagItem.htmlFor = item.name;
+						tagItem.innerText = item.name;
+
+						let tag = document.createElement('input');
+						tag.setAttribute("type", "checkbox");
+						tag.classList.add('tag');
+						tag.id = item.name;
+						tagItem.appendChild(tag);
+
+						TAG_LIST.appendChild(tagItem);
+					})())
 				})
 		})
-
-	function renderTagInHtml(pokemonTags) {
-		const TAG_LIST = document.querySelector('.js-tagList');
-
-		let allPokemonTags = pokemonTags.results;
-
-		allPokemonTags.forEach(item => (function () {
-			let tagItem = document.createElement('label');
-			tagItem.classList.add('tags__item', 'text');
-			tagItem.htmlFor = item.name;
-			tagItem.innerText = item.name;
-
-			let tag = document.createElement('input');
-			tag.setAttribute("type", "checkbox");
-			tag.classList.add('tag');
-			tag.id = item.name;
-			tagItem.appendChild(tag);
-
-			TAG_LIST.appendChild(tagItem);
-		})())
-
-	}
 }
 
 // LOADING POKEMON FROM URL
@@ -159,58 +154,20 @@ function loadMainPage() {
 				numPagination = Math.ceil(allPokemonsArr.length / selectOptions[i].value);
 			}
 		}
-		function createPagination(numPagination) {
-			let pagination = document.querySelector('.js-pagination');
-			pagination.innerHTML = '';
+		let pagination = document.querySelector('.js-pagination');
+		pagination.innerHTML = '';
 
-			for (let i = 1; i <= numPagination; i++) {
-				let paginationItem = document.createElement('a');
-				paginationItem.classList.add('pagination__item');
-				paginationItem.innerText = i;
+		for (let i = 1; i <= numPagination; i++) {
+			let paginationItem = document.createElement('a');
+			paginationItem.classList.add('pagination__item');
+			paginationItem.innerText = i;
 
-				pagination.appendChild(paginationItem);
-			}
-			let paginationItem = document.querySelectorAll('.pagination__item');
-			paginationItem[0].classList.add('js-active');
+			pagination.appendChild(paginationItem);
 		}
-		createPagination(numPagination);
+		let paginationItem = document.querySelectorAll('.pagination__item');
+		paginationItem[0].classList.add('js-active');
 	}
-	function actionPagination() {
-		let paginationList = document.querySelectorAll('.pagination__item');
-		let numOfNotesOnPage;
-		paginationList.forEach(item => item.addEventListener('click', function() {	
-			clearPage();
-			for (let i = 0; i < paginationList.length; i++) {
-				paginationList[i].classList.remove('js-active');
-			}
-			this.classList.add('js-active');
-			for (let i = 0; i < selectOptions.length; i++) {
-				if (selectOptions[i].selected) {
-					numOfNotesOnPage = selectOptions[i].value;
-				}
-			}
-			let pagNum = this.innerText;
-			let start = numOfNotesOnPage * (pagNum - 1);
-			let end = numOfNotesOnPage * pagNum;
-			for (let i = start; i < end; i++) {
-				listOfAllPokemos[i].createPokemonBlock();
-			}
-			console.log(pagNum);
-		}))
-	}
-	// TAGS
-	let allPokemonTags = [];
-	// CHOSOSE TAG ITEM STYLING
-	let stylingChosenTagItem = function () {
-		let tagItemCheck = document.querySelectorAll('.tags__item [type=checkbox]');
-		for (let i = 0; i < tagItemCheck.length; i++) {
-			tagItemCheck[i].addEventListener('click', function () {
-				let tagValue = this.id;
-				this.closest('.tags__item').classList.toggle('tags__item--red');
-				tagAction();
-			})
-		}
-	}
+
 	function tagAction() {
 		clearPage();
 		let tagList = document.querySelectorAll('.tags__item--red');
@@ -284,12 +241,46 @@ function loadMainPage() {
 			}
 		}
 
+	}	
+	// CHOSOSE TAG ITEM STYLING
+	let stylingChosenTagItem = function () {
+		let tagItemCheck = document.querySelectorAll('.tags__item [type=checkbox]');
+		for (let i = 0; i < tagItemCheck.length; i++) {
+			tagItemCheck[i].addEventListener('click', function () {
+				let tagValue = this.id;
+				this.closest('.tags__item').classList.toggle('tags__item--red');
+				tagAction();
+			})
+		}
 	}
 	function createNewPokemonsArr(valueOfFun) {
 		clearPage();
 		for (let i = 0; i < valueOfFun; i++) {
 			listOfAllPokemos[i].createPokemonBlock();
 		}
+	}
+	function actionPagination() {
+		let paginationList = document.querySelectorAll('.pagination__item');
+		let numOfNotesOnPage;
+		paginationList.forEach(item => item.addEventListener('click', function() {	
+			clearPage();
+			for (let i = 0; i < paginationList.length; i++) {
+				paginationList[i].classList.remove('js-active');
+			}
+			this.classList.add('js-active');
+			for (let i = 0; i < selectOptions.length; i++) {
+				if (selectOptions[i].selected) {
+					numOfNotesOnPage = selectOptions[i].value;
+				}
+			}
+			let pagNum = this.innerText;
+			let start = numOfNotesOnPage * (pagNum - 1);
+			let end = numOfNotesOnPage * pagNum;
+			for (let i = start; i < end; i++) {
+				listOfAllPokemos[i].createPokemonBlock();
+			}
+			console.log(pagNum);
+		}))
 	}
 	let init = function() {
 		createNewPokemonsArr(value);
@@ -304,7 +295,6 @@ function clearPage() {
 }
 clearPage();
 function loadPokemons(newPokemonsArr) {
-	let count = 0;
 	if (newPokemonsArr.length > 1) {
 		for (let i = 0; i < newPokemonsArr.length; i++) {
 			let pokemonUrl = newPokemonsArr[i].url;
@@ -322,7 +312,7 @@ function loadPokemons(newPokemonsArr) {
 						let newPokemon = new pokemonCreate(pokemon.name, pokemon.sprites.front_default, pokemon.types, pokemon.stats);
 						listOfAllPokemos.push(newPokemon);
 							if (listOfAllPokemos.length == newPokemonsArr.length) {
-							loadBySelect();
+							loadMainPage();
 						}
 					})
 			})
